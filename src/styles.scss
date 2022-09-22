@@ -1,3 +1,5 @@
+@import "./assets/style/theme.scss";
+
 html,
 body {
   height: 100%;
@@ -5,4 +7,14 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// layout
+.header-wrapper .mat-toolbar {
+  height: 60px;
+}
+
+.main-wrapper .mat-sidenav-container {
+  min-height: calc(100vh - 60px);
+  padding: 15px 25px;
 }

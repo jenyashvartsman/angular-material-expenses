@@ -1,0 +1,25 @@
+<header class="header-wrapper">
+  <mat-toolbar color="primary">
+    <!-- app name -->
+    <span>Angular Expences</span>
+
+    <span class="header-spacer"></span>
+
+    <!-- action buttons -->
+    <button
+      mat-icon-button
+      class="favorite-icon"
+      aria-label="Example icon-button with heart icon"
+    >
+      <mat-icon>add_circle</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with share icon"
+      (click)="toggleTheme()"
+    >
+      <mat-icon>{{ theme === "dark" ? "light_mode" : "dark_mode" }}</mat-icon>
+    </button>
+  </mat-toolbar>
+</header>
