@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './components/header/header.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ExpensesTableModule } from './components/expenses-table/expenses-table.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     BrowserAnimationsModule,
     HeaderModule,
     MatSidenavModule,
+    ExpensesTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

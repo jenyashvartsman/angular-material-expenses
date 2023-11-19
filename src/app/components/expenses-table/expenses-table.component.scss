@@ -1,0 +1,14 @@
+.expenses-table-wrapper {
+  table {
+    width: 100%;
+
+    th,
+    td {
+      width: 25%;
+    }
+
+    th.mat-sort-header-sorted {
+      color: black;
+    }
+  }
+}

@@ -17,12 +17,7 @@ export class StorageService {
   }
 
   getItem(key: string): any {
-    try {
-      const value = this.storage.getItem(this._getKey(key));
-      return JSON.parse(value as string);
-    } catch (e) {
-      console.error(e);
-    }
+    return this.storage.getItem(this._getKey(key));
   }
 
   private _getKey(key: string): string {

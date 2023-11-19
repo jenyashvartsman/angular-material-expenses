@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { themeType } from 'src/app/models/theme.type';
+import { EThemeType } from 'src/app/models/e-theme.type';
 import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
@@ -8,14 +8,15 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  theme?: themeType;
+  theme?: EThemeType;
 
   constructor(private readonly themeService: ThemeService) {
     this.theme = this.themeService.currentActive();
   }
 
   toggleTheme(): void {
-    this.theme = this.theme === 'dark' ? 'light' : 'dark';
+    this.theme =
+      this.theme === EThemeType.dark ? EThemeType.light : EThemeType.dark;
     this.themeService.update(this.theme);
   }
 }

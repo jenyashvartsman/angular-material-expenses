@@ -1,5 +1,5 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
-import { themeType } from '../models/theme.type';
+import { EThemeType } from '../models/e-theme.type';
 import { StorageService } from './storage.service';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { StorageService } from './storage.service';
 })
 export class ThemeService {
   private renderer: Renderer2;
-  private colorScheme: themeType = 'light';
+  private colorScheme: EThemeType = EThemeType.light;
   private colorSchemePrefix = 'color-scheme-';
   private readonly storageKey = 'theme';
 
@@ -26,16 +26,19 @@ export class ThemeService {
     );
   }
 
-  update(scheme: themeType): void {
+  update(scheme: EThemeType): void {
     this._setColorScheme(scheme);
     this.renderer.removeClass(
       document.body,
-      this.colorSchemePrefix + (this.colorScheme === 'dark' ? 'light' : 'dark')
+      this.colorSchemePrefix +
+        (this.colorScheme === EThemeType.dark
+          ? EThemeType.light
+          : EThemeType.dark)
     );
     this.renderer.addClass(document.body, this.colorSchemePrefix + scheme);
   }
 
-  currentActive(): themeType {
+  currentActive(): EThemeType {
     return this.colorScheme;
   }
 
@@ -43,14 +46,14 @@ export class ThemeService {
     if (window.matchMedia('(prefers-color-scheme)').media !== 'not all') {
       this.colorScheme = window.matchMedia('(prefers-color-scheme: dark)')
         .matches
-        ? 'dark'
-        : 'light';
+        ? EThemeType.dark
+        : EThemeType.light;
     } else {
-      this.colorScheme = 'dark';
+      this.colorScheme = EThemeType.dark;
     }
   }
 
-  private _setColorScheme(scheme: themeType): void {
+  private _setColorScheme(scheme: EThemeType): void {
     this.colorScheme = scheme;
     this.storageService.setItem(this.storageKey, scheme);
   }
@@ -58,7 +61,7 @@ export class ThemeService {
   private _getColorScheme(): void {
     const storageColorScheme = this.storageService.getItem(this.storageKey);
     if (storageColorScheme) {
-      this.colorScheme = storageColorScheme as themeType;
+      this.colorScheme = storageColorScheme as EThemeType;
     } else {
       this._detectPrefersColorScheme();
     }
